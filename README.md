@@ -50,3 +50,9 @@ https://localhost:6443/api/v1/namespaces/kube-system/services/https:kubernetes-d
 
 
 ![](https://i.imgur.com/oj9g1uM.png)
+
+
+ref:
+https://github.com/kubernetes/dashboard
+https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb
+https://www.cnblogs.com/RainingNight/p/deploying-k8s-dashboard-ui.html
