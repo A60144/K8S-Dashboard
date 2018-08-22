@@ -28,7 +28,21 @@ monitoring-influxdb-xxxx        1/1       Running
  
 # Show Token & Copy token
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
-  
+
+# Resault & Copy token
+Name:         admin-user-token-c8xvl
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name=admin-user
+              kubernetes.io/service-account.uid=f1b7d105-a5e8-11e8-965e-141877616412
+Type:  kubernetes.io/service-account-token
+Data
+====
+ca.crt:     1419 bytes
+namespace:  11 bytes
+token:      eyJhbG....
+
+
 # Login with paste token
-http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
+https://localhost:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default
 ```
