@@ -17,6 +17,14 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/s
 kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/influxdb.yaml
 kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/grafana.yaml
 kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+
+kubectl get po -n kube-system
+
+# show
+heapster-xxxxx                  1/1       Running 
+monitoring-grafana-xxxx         1/1       Running
+monitoring-influxdb-xxxx        1/1       Running
+
  
 # Show Token & Copy token
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
