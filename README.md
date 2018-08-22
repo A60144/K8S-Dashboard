@@ -4,13 +4,12 @@
 ## Quickly to start
 
 ```
-# For RBAC
+# Create for RBAC
 kubectl create -f admin-user.yaml
 kubectl create -f admin-user-role-binding.yaml
 kubectl create -f open-api.yaml
 
-
-# Creat dashboard
+# Create dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
  
 # Create monitoring
@@ -18,18 +17,18 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/d
 kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/grafana.yaml
 kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
 
+# show pod
 kubectl get po -n kube-system
 
-# show
 heapster-xxxxx                  1/1       Running 
 monitoring-grafana-xxxx         1/1       Running
 monitoring-influxdb-xxxx        1/1       Running
-
- 
-# Show Token & Copy token
+```
+```
+# Show Token
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 
-# Resault & Copy token
+# Copy token
 Name:         admin-user-token-c8xvl
 Namespace:    kube-system
 Labels:       <none>
@@ -40,9 +39,14 @@ Data
 ====
 ca.crt:     1419 bytes
 namespace:  11 bytes
-token:      eyJhbG....
+token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3....
+```
 
-
+```
 # Login with paste token
 https://localhost:6443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/overview?namespace=default
 ```
+![](https://i.imgur.com/t0uiytF.png)
+
+
+![](https://i.imgur.com/oj9g1uM.png)
